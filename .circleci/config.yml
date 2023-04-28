@@ -1,0 +1,18 @@
+version: 2.1
+
+executors:
+  my-docker:
+    docker:
+      - image: ldenefle/my-env-msb:latest
+
+jobs:
+  build:
+    executor: my-docker
+    steps:
+      - checkout
+      - run: echo $PATH
+
+workflows:
+  build-n-deploy:
+    jobs:
+      - build
